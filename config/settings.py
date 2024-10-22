@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     'rest_framework',
     'one_to_one.apps.OneToOneConfig',
     'one_to_many.apps.OneToManyConfig',
