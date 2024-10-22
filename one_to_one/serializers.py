@@ -6,7 +6,8 @@ from .models import Family
 class HouseSerializer(serializers.ModelSerializer):
     class Meta:
         model = House
-        fields = '__all__'
+        fields = "__all__"
+
 
 class FamilySerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Family(models.Model):
     lastname = models.CharField(max_length=255)
     number_of_members = models.IntegerField()
@@ -10,6 +11,7 @@ class Family(models.Model):
     class Meta:
         # Django не знает правильную множественную форму :)
         verbose_name_plural = "Families"
+
 
 class House(models.Model):
     house_address = models.CharField(max_length=255)

@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('one_to_one', '0002_house_id_alter_house_house_address'),
+        ("one_to_one", "0002_house_id_alter_house_house_address"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='family',
-            options={'verbose_name_plural': 'Families'},
+            name="family",
+            options={"verbose_name_plural": "Families"},
         ),
     ]
