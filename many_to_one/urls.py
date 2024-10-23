@@ -10,8 +10,8 @@ from .views import (
 
 urlpatterns = [
     # Read
-    path("manufacturers/", ManufacturerListView.as_view(), name="manufacturer_list"),
-    path("cars/", CarListView.as_view(), name="car_list"),
+    path("manufacturers", ManufacturerListView.as_view(), name="manufacturer_list"),
+    path("cars", CarListView.as_view(), name="car_list"),
 
     # Create
     path(

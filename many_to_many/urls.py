@@ -13,9 +13,9 @@ from .views import (
 
 urlpatterns = [
     # Read
-    path("classes/", ClassListView.as_view(), name="class_list"),
-    path("students/", StudentListView.as_view(), name="student_list"),
-    path("professors/", ProfessorListView.as_view(), name="professor_list"),
+    path("classes", ClassListView.as_view(), name="class_list"),
+    path("students", StudentListView.as_view(), name="student_list"),
+    path("professors", ProfessorListView.as_view(), name="professor_list"),
 
     # Create
     path("classes/create/", ClassCreateView.as_view(), name="class_create"),

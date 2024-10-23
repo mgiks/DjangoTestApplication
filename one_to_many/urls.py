@@ -10,8 +10,8 @@ from .views import (
 
 urlpatterns = [
     # Read
-    path("blogs/", BlogListView.as_view(), name="blog_list"),
-    path("posts/", PostListView.as_view(), name="post_list"),
+    path("blogs", BlogListView.as_view(), name="blog_list"),
+    path("posts", PostListView.as_view(), name="post_list"),
 
     # Create
     path("blogs/create/", BlogCreateView.as_view(), name="blog_create"),
