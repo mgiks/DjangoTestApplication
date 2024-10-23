@@ -12,4 +12,4 @@ class HouseSerializer(serializers.ModelSerializer):
 class FamilySerializer(serializers.ModelSerializer):
     class Meta:
         model = Family
-        fields = ["lastname", "number_of_members"]
+        fields = "__all__"

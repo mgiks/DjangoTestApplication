@@ -6,7 +6,7 @@ class Blog(models.Model):
         ACTIVE = "active", "Active"
         INACTIVE = "inactive", "Inactive"
 
-    author = models.CharField(max_length=100)
+    author = models.CharField(max_length=100, primary_key=True)
     status = models.CharField(
         max_length=9, choices=Status.choices, default=Status.ACTIVE
     )

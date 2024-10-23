@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Family(models.Model):
-    lastname = models.CharField(max_length=255)
+    lastname = models.CharField(max_length=255, primary_key=True)
     number_of_members = models.IntegerField()
 
     def __str__(self):
@@ -14,7 +14,7 @@ class Family(models.Model):
 
 
 class House(models.Model):
-    house_address = models.CharField(max_length=255)
+    house_address = models.CharField(max_length=255, primary_key=True)
     family = models.OneToOneField(Family, on_delete=models.CASCADE)
 
     def __str__(self):

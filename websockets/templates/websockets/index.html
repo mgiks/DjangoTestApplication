@@ -1,0 +1,324 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Test Application</title>
+</head>
+<script src="{% static 'index.js' %}"></script>
+<body>
+    <div style="display: flex">
+        <!-- One to One -->
+        <div style="border: 1px solid black; padding: 10px">
+
+            <h1>One to One</h1>
+
+            <h3>List Items</h3>
+            <button onclick="listItems('/one-to-one/houses/', 'House')">Houses</button>
+            <button onclick="listItems('/one-to-one/families/', 'Families')">Families</button>
+
+            <hr>
+
+            <h3>Create House</h3>
+            <form id='houseCreateForm'>
+                {{ house_form.as_p }}
+                {% csrf_token %}
+            </form>
+            <button type="submit" onclick="createItem('/one-to-one/houses/', 'House')">Submit</button>
+
+            <hr>
+
+            <h3>Create Family</h3>
+            <form id='familyCreateForm'>
+                {{ family_form.as_p }}
+                {% csrf_token %}
+            </form>
+            <button type="submit" onclick="createItem('/one-to-one/families/', 'Family')">Submit</button>
+
+            <hr>
+
+            <h3>Update House</h3>
+                <h4>Get / Populate Fields / Delete</h4>
+                <p>
+                    <input type="text" id="houseId">
+                </p>
+
+                <button onclick="getItem('/one-to-one/houses/', 'House')">Get</button>
+                <button onclick="populateItem('/one-to-one/houses/', 'House')">Populate</button>
+                <button onclick="deleteItem('/one-to-one/houses/', 'House')">Delete</button>
+
+                <h4>Change House</h4>
+                <form id='houseUpdateForm'>
+                    {{ family_form.as_p }}
+                    {% csrf_token %}
+                </form>
+                <button type="submit" onclick="">Submit</button>
+
+            <hr>
+
+            <h3>Update Family</h3>
+                <h4>Get / Populate Fields / Delete</h4>
+                <p>
+                    <input type="text" id="familyId">
+                </p>
+
+                <button onclick="getItem('/one-to-one/families/', 'Family')">Get</button>
+                <button onclick="populateItem('/one-to-one/families/', 'Family')">Populate</button>
+                <button onclick="deleteItem('/one-to-one/families/', 'Family')">Delete</button>
+
+                <h4>Change Family</h4>
+                <form id='familyUpdateForm'>
+                    {{ family_form.as_p }}
+                    {% csrf_token %}
+                </form>
+                <button type="submit" onclick="">Submit</button>
+        </div>
+
+
+        <!-- One to Many -->
+        <div style="border: 1px solid black; padding: 10px">
+            <h1>One to Many</h1>
+
+            <h3>List Items</h3>
+            <button onclick="listItems('/one-to-many/blogs/', 'Blogs')">Blogs</button>
+            <button onclick="listItems('/one-to-many/posts/', 'Posts')">Posts</button>
+
+            <hr>
+
+            <h3>Create Blog</h3>
+            <form id='blogCreateForm'>
+                {{ blog_form.as_p }}
+                {% csrf_token %}
+            </form>
+            <button type="submit" onclick="createItem('/one-to-many/blogs/', 'Blog')">Submit</button>
+
+            <hr>
+
+            <h3>Create Post</h3>
+            <form id='postCreateForm'>
+                {{ post_form.as_p }}
+                {% csrf_token %}
+            </form>
+            <button type="submit" onclick="createItem('/one-to-many/posts/', 'Post')">Submit</button>
+
+            <hr>
+
+            <h3>Update Blog</h3>
+                <h4>Get / Populate Fields / Delete</h4>
+                <p>
+                    <input type="text" id="blogId">
+                </p>
+
+                <button onclick="getItem('/one-to-many/blogs/', 'Blog')">Get</button>
+                <button onclick="populateItem('/one-to-many/blogs/', 'Blog')">Populate</button>
+                <button onclick="deleteItem('/one-to-many/blogs/', 'Blog')">Delete</button>
+
+                <h4>Change Blog</h4>
+                <form id='blogUpdateForm'>
+                    {{ blog_form.as_p }}
+                    {% csrf_token %}
+                </form>
+                <button type="submit" onclick="">Submit</button>
+
+            <hr>
+
+            <h3>Update Post</h3>
+                <h4>Get / Populate Fields / Delete</h4>
+                <p>
+                    <input type="number" min="1" value="1" id="postId">
+                </p>
+
+                <button onclick="getItem('/one-to-many/posts/', 'Post')">Get</button>
+                <button onclick="populateItem('/one-to-many/posts/', 'Post')">Populate</button>
+                <button onclick="deleteItem('/one-to-many/posts/', 'Post')">Delete</button>
+
+                <h4>Change Post</h4>
+                <form id='postUpdateForm'>
+                    {{ post_form.as_p }}
+                    {% csrf_token %}
+                </form>
+                <button type="submit" onclick="">Submit</button>
+        </div>
+
+
+        <!-- Many to One -->
+        <div style="border: 1px solid black; padding: 10px">
+            <h1>Many to One</h1>
+
+            <h3>List Items</h3>
+            <button onclick="listItems('/many-to-one/manufacturers/', 'Manufacturers')">Manufacturers</button>
+            <button onclick="listItems('/many-to-one/cars/', 'Cars')">Cars</button>
+
+            <hr>
+
+            <h3>Create Manufacturer</h3>
+            <form id='manufacturerCreateForm'>
+                {{ manufacturer_form.as_p }}
+                {% csrf_token %}
+            </form>
+            <button type="submit" onclick="createItem('/many-to-one/manufacturers/', 'Manufacturer')">Submit</button>
+
+            <hr>
+
+            <h3>Create Car</h3>
+            <form id='carCreateForm'>
+                {{ car_form.as_p }}
+                {% csrf_token %}
+            </form>
+            <button type="submit" onclick="createItem('/many-to-one/manufacturers/', 'Car')">Submit</button>
+
+            <hr>
+
+            <h3>Update Manufacturer</h3>
+                <h4>Get / Populate Fields / Delete</h4>
+                <p>
+                    <input type="text" id="manufacturerId">
+                </p>
+
+                <button onclick="getItem('/many-to-one/manufacturers/', 'Manufacturer')">Get</button>
+                <button onclick="populateItem('/many-to-one/manufacturers/', 'Manufacturer')">Populate</button>
+                <button onclick="deleteItem('/many-to-one/manufacturers/', 'Manufacturer')">Delete</button>
+
+                <h4>Change Manufacturer</h4>
+                <form id='manufacturerUpdateForm'>
+                    {{ manufacturer_form.as_p }}
+                    {% csrf_token %}
+                </form>
+                <button type="submit" onclick="">Submit</button>
+
+            <hr>
+
+            <h3>Update Car</h3>
+                <h4>Get / Populate Fields / Delete</h4>
+                <p>
+                    <input type="number" min="1" value="1" id="carId">
+                </p>
+
+                <button onclick="getItem('/many-to-one/cars/', 'Car')">Get</button>
+                <button onclick="populateItem('/many-to-one/cars/', 'Car')">Populate</button>
+                <button onclick="deleteItem('/many-to-one/cars/', 'Car')">Delete</button>
+
+                <h4>Change Car</h4>
+                <form id='carUpdateForm'>
+                    {{ car_form.as_p }}
+                    {% csrf_token %}
+                </form>
+                <button type="submit" onclick="">Submit</button>
+        </div>
+
+
+        <!-- Many to Many -->
+        <div style="border: 1px solid black; padding: 10px">
+            <h1>Many to Many</h1>
+
+            <h3>List Items</h3>
+            <button onclick="listItems('/many-to-many/classes/', 'Classes')">Classes</button>
+            <button onclick="listItems('/many-to-many/professors/', 'Professors')">Professors</button>
+            <button onclick="listItems('/many-to-many/students/', 'Students')">Students</button>
+
+            <hr>
+
+            <h3>Create Class</h3>
+            <form id='classCreateForm'>
+                {{ class_form.as_p }}
+                {% csrf_token %}
+            </form>
+            <button type="submit" onclick="createItem('/many-to-many/classes/', 'Class')">Submit</button>
+
+            <hr>
+
+            <h3>Create Professor</h3>
+            <form id='professorCreateForm'>
+                {{ professor_form.as_p }}
+                {% csrf_token %}
+            </form>
+            <button type="submit" onclick="createItem('/many-to-many/professors/', 'Professor')">Submit</button>
+
+            <hr>
+
+            <h3>Create Student</h3>
+            <form id='studentCreateForm'>
+                {{ student_form.as_p }}
+                {% csrf_token %}
+            </form>
+            <button type="submit" onclick="createItem('/many-to-many/students/', 'Student')">Submit</button>
+
+            <hr>
+
+            <h3>Update Class</h3>
+                <h4>Get / Populate Fields / Delete</h4>
+                <p>
+                    <input type="number" min="1" value="1" id="classId">
+                </p>
+
+                <button onclick="getItem('/many-to-many/classes/', 'Class')">Get</button>
+                <button onclick="populateItem('/many-to-many/classes/', 'Class')">Populate</button>
+                <button onclick="deleteItem('/many-to-many/classes/', 'Class')">Delete</button>
+
+                <h4>Change Class</h4>
+                <form id='classUpdateForm'>
+                    {{ class_form.as_p }}
+                    {% csrf_token %}
+                </form>
+                <button type="submit" onclick="">Submit</button>
+
+            <hr>
+
+            <h3>Update Professor</h3>
+                <h4>Get / Populate Fields / Delete</h4>
+                <p>
+                    <input type="text" id="professorId">
+                </p>
+
+                <button onclick="getItem('/many-to-many/professors/', 'Professor')">Get</button>
+                <button onclick="populateItem('/many-to-many/professors/', 'Professor')">Populate</button>
+                <button onclick="deleteItem('/many-to-many/professors/', 'Professor')">Delete</button>
+
+                <h4>Change Professor</h4>
+                <form id='professorUpdateForm'>
+                    {{ professor_form.as_p }}
+                    {% csrf_token %}
+                </form>
+                <button type="submit" onclick="">Submit</button>
+
+            <hr>
+
+            <h3>Update Student</h3>
+
+                <h4>Get / Populate Fields / Delete</h4>
+                <p>
+                    <input type="number" min="1" value="1" id="studentId">
+                </p>
+
+                <button onclick="getItem('/many-to-many/students/', 'Student')">Get</button>
+                <button onclick="populateItem('/many-to-many/students/', 'Student')">Populate</button>
+                <button onclick="deleteItem('/many-to-many/students/', 'Student')">Delete</button>
+
+                <h4>Change Student</h4>
+                <form id='studentUpdateForm'>
+                    {{ student_form.as_p }}
+                    {% csrf_token %}
+                </form>
+                <button type="submit" onclick="">Submit</button>
+        </div>
+
+
+        <!-- Responses -->
+        <div style="border: 1px solid black; padding: 10px">
+            <h1>Response</h1>
+            <div id="result">
+                None
+            </div>
+        </div>
+
+
+        <!-- Notifications -->
+        <div style="border: 1px solid black; padding: 10px">
+            <h1>Notifications</h1>
+            <div id="notificationDiv">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

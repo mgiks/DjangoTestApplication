@@ -10,9 +10,8 @@ from .views import (
 
 urlpatterns = [
     # Read
-    path("manufacturers", ManufacturerListView.as_view(), name="manufacturer_list"),
-    path("cars", CarListView.as_view(), name="car_list"),
-
+    path("manufacturers/", ManufacturerListView.as_view(), name="manufacturer_list"),
+    path("cars/", CarListView.as_view(), name="car_list"),
     # Create
     path(
         "manufacturers/create/",
@@ -20,12 +19,11 @@ urlpatterns = [
         name="manufacturer_create",
     ),
     path("cars/create/", CarCreateView.as_view(), name="car_create"),
-
     # Update/Delete
     path(
-        "manufacturers/<int:pk>",
+        "manufacturers/<int:pk>/",
         ManufacturerReadUpdateDeleteView.as_view(),
         name="manufacturer_detail",
     ),
-    path("cars/<int:pk>", CarReadUpdateDeleteView.as_view(), name="car_detail"),
+    path("cars/<int:pk>/", CarReadUpdateDeleteView.as_view(), name="car_detail"),
 ]

@@ -31,10 +31,10 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("docs/", schema_view.with_ui("swagger"), name="docs"),
-
     # Apps
     path("one-to-one/", include("one_to_one.urls")),
     path("one-to-many/", include("one_to_many.urls")),
     path("many-to-one/", include("many_to_one.urls")),
     path("many-to-many/", include("many_to_many.urls")),
+    path("main/", include("websockets.urls"))
 ]

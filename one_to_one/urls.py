@@ -11,17 +11,15 @@ from .views import (
 
 urlpatterns = [
     # Read
-    path("houses", HouseListView.as_view(), name="house_list"),
-    path("families", FamilyListView.as_view(), name="family_list"),
-
+    path("houses/", HouseListView.as_view(), name="house_list"),
+    path("families/", FamilyListView.as_view(), name="family_list"),
     # Create
     path("houses/create/", HouseCreateView.as_view(), name="house_create"),
-    path("families/create/", FamilyCreateView.as_view(), name="house_create"),
-
+    path("families/create/", FamilyCreateView.as_view(), name="family_create"),
     # Update/Delete
-    path("houses/<int:pk>", HouseReadUpdateDeleteView.as_view(), name="house_details"),
+    path("houses/<int:pk>/", HouseReadUpdateDeleteView.as_view(), name="house_details"),
     path(
-        "families/<int:pk>",
+        "families/<int:pk>/",
         FamilyReadUpdateDeleteView.as_view(),
         name="family_details",
     ),

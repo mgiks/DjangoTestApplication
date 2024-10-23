@@ -7,8 +7,8 @@ class Professor(models.Model):
         OK = "ok", "Ok"
         GOOD = "good", "Good"
 
-    name = models.CharField(max_length=255)
-    skill_level = models.CharField(max_length=4, choices=Skill.choices)
+    name = models.CharField(max_length=255, primary_key=True)
+    skill_level = models.CharField(max_length=4, choices=Skill.choices, default=Skill.OK)
 
     def __str__(self):
         return f"Professor {self.name}"
