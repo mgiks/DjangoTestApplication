@@ -12,11 +12,18 @@ socket.onmessage = function(e) {
         let notificationDiv = document.getElementById('notificationDiv')
 
         notificationDiv.innerHTML = `<div>
-            <p>${data.notification}</p>
+        <p>${data.notification}</p>
         </div>` + notificationDiv.innerHTML
     }
 }
 
+function slugify(str) {
+    str = str.toLowerCase();
+    str = str.replace(/[^a-z0-9 -]/g, '')
+             .replace(/\s+/g, '-')
+             .replace(/-+/g, '-');
+    return str;
+}
 
 
 async function listItems(path, name) {
@@ -70,16 +77,8 @@ async function createItem(path, name) {
 }
 
 async function getItem(path, name) {
-    function slugify(str) {
-        str = str.toLowerCase();
-        str = str.replace(/[^a-z0-9 -]/g, '')
-                 .replace(/\s+/g, '-')
-                 .replace(/-+/g, '-');
-        return str;
-    }
-
     const divResult = document.getElementById("result");
-    const id = await slugify(
+    const id = slugify(
         String(
             document.getElementById(`${name.toLowerCase()}Id`).value
         ).trim()
@@ -114,16 +113,8 @@ async function getItem(path, name) {
 }
 
 async function populateItem(path, name) {
-    function slugify(str) {
-        str = str.toLowerCase();
-        str = str.replace(/[^a-z0-9 -]/g, '')
-                 .replace(/\s+/g, '-')
-                 .replace(/-+/g, '-');
-        return str;
-    }
-
     const divResult = document.getElementById("result");
-    const id = await slugify(
+    const id = slugify(
         String(
             document.getElementById(`${name.toLowerCase()}Id`).value
         ).trim()
@@ -168,16 +159,8 @@ async function populateItem(path, name) {
 }
 
 async function deleteItem(path, name) {
-    function slugify(str) {
-        str = str.toLowerCase();
-        str = str.replace(/[^a-z0-9 -]/g, '')
-                 .replace(/\s+/g, '-')
-                 .replace(/-+/g, '-');
-        return str;
-    }
-
     const divResult = document.getElementById("result");
-    const id = await slugify(
+    const id = slugify(
         String(
             document.getElementById(`${name.toLowerCase()}Id`).value
         ).trim()
@@ -213,14 +196,6 @@ async function deleteItem(path, name) {
 }
 
 async function updateItem(path, name) {
-    function slugify(str) {
-        str = str.toLowerCase();
-        str = str.replace(/[^a-z0-9 -]/g, '')
-                 .replace(/\s+/g, '-')
-                 .replace(/-+/g, '-');
-        return str;
-    }
-
     const divResult = document.getElementById("result");
     const form = document.getElementById(`${name.toLowerCase()}UpdateForm`);
     const formData = new FormData(form);
@@ -229,6 +204,7 @@ async function updateItem(path, name) {
             document.getElementById(`${name.toLowerCase()}Id`).value
         ).trim()
     )
+
     const url = `https://${host}${path}${id}/`;
     try {
         response = await fetch(url, {body: formData, method: "put"})
