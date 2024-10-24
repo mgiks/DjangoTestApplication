@@ -18,14 +18,6 @@ socket.onmessage = function(e) {
 }
 
 
-function slugify(str) {
-    str = str.toLowerCase();
-    str = str.replace(/[^a-z0-9 -]/g, '')
-             .replace(/\s+/g, '-')
-             .replace(/-+/g, '-');
-    return str;
-  }
-
 
 async function listItems(path, name) {
     const divResult = document.getElementById("result");
@@ -78,6 +70,14 @@ async function createItem(path, name) {
 }
 
 async function getItem(path, name) {
+    function slugify(str) {
+        str = str.toLowerCase();
+        str = str.replace(/[^a-z0-9 -]/g, '')
+                 .replace(/\s+/g, '-')
+                 .replace(/-+/g, '-');
+        return str;
+    }
+
     const divResult = document.getElementById("result");
     const id = await slugify(
         String(
@@ -114,6 +114,14 @@ async function getItem(path, name) {
 }
 
 async function populateItem(path, name) {
+    function slugify(str) {
+        str = str.toLowerCase();
+        str = str.replace(/[^a-z0-9 -]/g, '')
+                 .replace(/\s+/g, '-')
+                 .replace(/-+/g, '-');
+        return str;
+    }
+
     const divResult = document.getElementById("result");
     const id = await slugify(
         String(
@@ -160,6 +168,14 @@ async function populateItem(path, name) {
 }
 
 async function deleteItem(path, name) {
+    function slugify(str) {
+        str = str.toLowerCase();
+        str = str.replace(/[^a-z0-9 -]/g, '')
+                 .replace(/\s+/g, '-')
+                 .replace(/-+/g, '-');
+        return str;
+    }
+
     const divResult = document.getElementById("result");
     const id = await slugify(
         String(
@@ -197,6 +213,14 @@ async function deleteItem(path, name) {
 }
 
 async function updateItem(path, name) {
+    function slugify(str) {
+        str = str.toLowerCase();
+        str = str.replace(/[^a-z0-9 -]/g, '')
+                 .replace(/\s+/g, '-')
+                 .replace(/-+/g, '-');
+        return str;
+    }
+
     const divResult = document.getElementById("result");
     const form = document.getElementById(`${name.toLowerCase()}UpdateForm`);
     const formData = new FormData(form);
