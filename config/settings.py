@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-h@!o25+30$meqyf&mxne$)lqqclxue7**u9464x@xr=3zls-hf
 DEBUG = True
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "urchin-app-6d5dz.ondigitalocean.app"]
 
 # Для взаимодействия со фронтом
 CORS_ORIGIN_ALLOW_ALL = True
