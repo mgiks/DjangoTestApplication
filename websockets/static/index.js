@@ -1,7 +1,7 @@
 // WebSockets
 const host = window.location.host
 
-let url = `ws://${host}/ws/socket-server/`
+let url = `wss://${host}/ws/socket-server/`
 
 const socket = new WebSocket(url)
 
