@@ -7,7 +7,6 @@ const socket = new WebSocket(url)
 
 socket.onmessage = function(e) {
     let data = JSON.parse(e.data)
-    console.log('Data', data)
 
     if (data.type === 'notification') {
         let notificationDiv = document.getElementById('notificationDiv')
@@ -205,10 +204,10 @@ async function updateItem(path, name) {
         String(
             document.getElementById(`${name.toLowerCase()}Id`).value
         ).trim()
-    )
+    )``
     const url = `https://${host}${path}${id}/`;
     try {
-        response = await fetch(url, {body: formData, method: "patch"})
+        response = await fetch(url, {body: formData, method: "put"})
         .then(
             response => {
                 if (!response.ok) {
