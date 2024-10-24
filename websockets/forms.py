@@ -9,33 +9,33 @@ from many_to_many.models import Class, Professor, Student
 class HouseForm(forms.ModelForm):
     class Meta:
         model = House
-        fields = "__all__"
+        exclude = ["slug"]
 
 
 class FamilyForm(forms.ModelForm):
     class Meta:
         model = Family
-        fields = "__all__"
+        exclude = ["slug"]
 
 
 # One to Many
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        fields = "__all__"
+        exclude = ["slug"]
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = "__all__"
+        exclude = ["slug"]
 
 
 # Many to One
 class ManufacturerForm(forms.ModelForm):
     class Meta:
         model = Manufacturer
-        fields = "__all__"
+        exclude = ["slug"]
 
 
 class CarForm(forms.ModelForm):
@@ -54,10 +54,10 @@ class ClassForm(forms.ModelForm):
 class ProfessorForm(forms.ModelForm):
     class Meta:
         model = Professor
-        fields = "__all__"
+        exclude = ["slug"]
 
 
 class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = "__all__"
+        exclude = ["slug"]

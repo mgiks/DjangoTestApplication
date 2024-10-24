@@ -1,5 +1,15 @@
 from django.shortcuts import render
-from .forms import *
+from .forms import (
+    HouseForm,
+    FamilyForm,
+    BlogForm,
+    PostForm,
+    ManufacturerForm,
+    CarForm,
+    ClassForm,
+    ProfessorForm,
+    StudentForm,
+)
 
 
 def render_form(request):

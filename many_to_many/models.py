@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 
 class Professor(models.Model):
@@ -7,8 +8,15 @@ class Professor(models.Model):
         OK = "ok", "Ok"
         GOOD = "good", "Good"
 
-    name = models.CharField(max_length=255, primary_key=True)
-    skill_level = models.CharField(max_length=4, choices=Skill.choices, default=Skill.OK)
+    slug = models.SlugField(primary_key=True, blank=True)
+    name = models.CharField(max_length=255)
+    skill_level = models.CharField(
+        max_length=4, choices=Skill.choices, default=Skill.OK
+    )
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Professor {self.name}"
@@ -24,9 +32,14 @@ class Class(models.Model):
 
 
 class Student(models.Model):
+    slug = models.SlugField(primary_key=True, blank=True)
     name = models.CharField(max_length=255)
     avg_grade = models.FloatField(max_length=4)
     classes = models.ManyToManyField(Class)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

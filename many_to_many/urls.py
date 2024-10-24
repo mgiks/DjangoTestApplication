@@ -23,12 +23,12 @@ urlpatterns = [
     # Update/Delete
     path("classes/<int:pk>/", ClassReadUpdateDeleteView.as_view(), name="class_detail"),
     path(
-        "students/<int:pk>/",
+        "students/<str:pk>/",
         StudentReadUpdateDeleteView.as_view(),
         name="student_detail",
     ),
     path(
-        "professors/<int:pk>/",
+        "professors/<str:pk>/",
         ProfessorReadUpdateDeleteView.as_view(),
         name="professor_detail",
     ),

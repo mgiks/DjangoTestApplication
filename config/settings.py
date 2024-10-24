@@ -25,7 +25,10 @@ SECRET_KEY = "django-insecure-h@!o25+30$meqyf&mxne$)lqqclxue7**u9464x@xr=3zls-hf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS=['*']
+
+ALLOWED_HOSTS = ["*"]
+
+# Для взаимодействия со фронтом
 CORS_ORIGIN_ALLOW_ALL = True
 
 
@@ -58,7 +61,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -80,11 +83,7 @@ TEMPLATES = [
 ]
 
 ASGI_APPLICATION = "config.asgi.application"
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND':'channels.layers.InMemoryChannelLayer'
-    }
-}
+CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
 
 
 # Database

@@ -15,7 +15,7 @@
             <h1>One to One</h1>
 
             <h3>List Items</h3>
-            <button onclick="listItems('/one-to-one/houses/', 'House')">Houses</button>
+            <button onclick="listItems('/one-to-one/houses/', 'Houses')">Houses</button>
             <button onclick="listItems('/one-to-one/families/', 'Families')">Families</button>
 
             <hr>
@@ -50,10 +50,10 @@
 
                 <h4>Change House</h4>
                 <form id='houseUpdateForm'>
-                    {{ family_form.as_p }}
+                    {{ house_form.as_p }}
                     {% csrf_token %}
                 </form>
-                <button type="submit" onclick="">Submit</button>
+                <button type="submit" onclick="updateItem('/one-to-one/houses/', 'House')">Submit</button>
 
             <hr>
 
@@ -72,7 +72,7 @@
                     {{ family_form.as_p }}
                     {% csrf_token %}
                 </form>
-                <button type="submit" onclick="">Submit</button>
+                <button type="submit" onclick="updateItem('/one-to-one/families/', 'Family')">Submit</button>
         </div>
 
 
@@ -119,14 +119,14 @@
                     {{ blog_form.as_p }}
                     {% csrf_token %}
                 </form>
-                <button type="submit" onclick="">Submit</button>
+                <button type="submit" onclick="updateItem('/one-to-many/blogs/', 'Blog')">Submit</button>
 
             <hr>
 
             <h3>Update Post</h3>
                 <h4>Get / Populate Fields / Delete</h4>
                 <p>
-                    <input type="number" min="1" value="1" id="postId">
+                    <input type="text" id="postId">
                 </p>
 
                 <button onclick="getItem('/one-to-many/posts/', 'Post')">Get</button>
@@ -138,7 +138,7 @@
                     {{ post_form.as_p }}
                     {% csrf_token %}
                 </form>
-                <button type="submit" onclick="">Submit</button>
+                <button type="submit" onclick="updateItem('/one-to-many/posts/', 'Post')">Submit</button>
         </div>
 
 
@@ -166,7 +166,7 @@
                 {{ car_form.as_p }}
                 {% csrf_token %}
             </form>
-            <button type="submit" onclick="createItem('/many-to-one/manufacturers/', 'Car')">Submit</button>
+            <button type="submit" onclick="createItem('/many-to-one/cars/', 'Car')">Submit</button>
 
             <hr>
 
@@ -185,7 +185,7 @@
                     {{ manufacturer_form.as_p }}
                     {% csrf_token %}
                 </form>
-                <button type="submit" onclick="">Submit</button>
+                <button type="submit" onclick="updateItem('/many-to-one/manufacturers/', 'Manufacturer')">Submit</button>
 
             <hr>
 
@@ -204,7 +204,7 @@
                     {{ car_form.as_p }}
                     {% csrf_token %}
                 </form>
-                <button type="submit" onclick="">Submit</button>
+                <button type="submit" onclick="updateItem('/many-to-one/cars/', 'Car')">Submit</button>
         </div>
 
 
@@ -261,7 +261,7 @@
                     {{ class_form.as_p }}
                     {% csrf_token %}
                 </form>
-                <button type="submit" onclick="">Submit</button>
+                <button type="submit" onclick="updateItem('/many-to-many/classes/', 'Class')">Submit</button>
 
             <hr>
 
@@ -280,7 +280,7 @@
                     {{ professor_form.as_p }}
                     {% csrf_token %}
                 </form>
-                <button type="submit" onclick="">Submit</button>
+                <button type="submit" onclick="updateItem('/many-to-many/professors/', 'Professor')">Submit</button>
 
             <hr>
 
@@ -288,7 +288,7 @@
 
                 <h4>Get / Populate Fields / Delete</h4>
                 <p>
-                    <input type="number" min="1" value="1" id="studentId">
+                    <input type="text" id="studentId">
                 </p>
 
                 <button onclick="getItem('/many-to-many/students/', 'Student')">Get</button>
@@ -300,7 +300,7 @@
                     {{ student_form.as_p }}
                     {% csrf_token %}
                 </form>
-                <button type="submit" onclick="">Submit</button>
+                <button type="submit" onclick="updateItem('/many-to-many/students/', 'Student')">Submit</button>
         </div>
 
 

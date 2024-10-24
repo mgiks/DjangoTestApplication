@@ -17,9 +17,9 @@ urlpatterns = [
     path("houses/create/", HouseCreateView.as_view(), name="house_create"),
     path("families/create/", FamilyCreateView.as_view(), name="family_create"),
     # Update/Delete
-    path("houses/<int:pk>/", HouseReadUpdateDeleteView.as_view(), name="house_details"),
+    path("houses/<str:pk>/", HouseReadUpdateDeleteView.as_view(), name="house_details"),
     path(
-        "families/<int:pk>/",
+        "families/<str:pk>/",
         FamilyReadUpdateDeleteView.as_view(),
         name="family_details",
     ),

@@ -5,7 +5,7 @@ from .models import Manufacturer, Car
 class ManufacturerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Manufacturer
-        fields = "__all__"
+        fields = ["name", "revenue"]
 
 
 class CarSerializer(serializers.ModelSerializer):

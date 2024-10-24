@@ -21,7 +21,7 @@ urlpatterns = [
     path("cars/create/", CarCreateView.as_view(), name="car_create"),
     # Update/Delete
     path(
-        "manufacturers/<int:pk>/",
+        "manufacturers/<str:pk>/",
         ManufacturerReadUpdateDeleteView.as_view(),
         name="manufacturer_detail",
     ),

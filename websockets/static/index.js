@@ -19,6 +19,15 @@ socket.onmessage = function(e) {
 }
 
 
+function slugify(str) {
+    str = str.toLowerCase();
+    str = str.replace(/[^a-z0-9 -]/g, '')
+             .replace(/\s+/g, '-')
+             .replace(/-+/g, '-');
+    return str;
+  }
+
+
 async function listItems(path, name) {
     const divResult = document.getElementById("result");
     const url = `http://${host}${path}`;
@@ -59,10 +68,7 @@ async function createItem(path, name) {
                 };
                 response.json()
                 .then(
-                    response => (
-                        divResult.innerHTML = JSON.stringify(response, undefined, 4),
-                        console.log(JSON.stringify(response, undefined, 4))
-                    )
+                    response => divResult.innerHTML = JSON.stringify(response, undefined, 4)
                 );
             }
         )
@@ -74,7 +80,11 @@ async function createItem(path, name) {
 
 async function getItem(path, name) {
     const divResult = document.getElementById("result");
-    const id = document.getElementById(`${name.toLowerCase()}Id`).value
+    const id = await slugify(
+        String(
+            document.getElementById(`${name.toLowerCase()}Id`).value
+        ).trim()
+    )
     const url = `http://${host}${path}${id}`;
     try {
         response = await fetch(url)
@@ -94,10 +104,7 @@ async function getItem(path, name) {
                 };
                 response.json()
                 .then(
-                    response => (
-                        divResult.innerHTML = JSON.stringify(response, undefined, 4),
-                        console.log(JSON.stringify(response, undefined, 4))
-                    )
+                    response => divResult.innerHTML = JSON.stringify(response, undefined, 4),
                 );
             }
         )
@@ -109,7 +116,11 @@ async function getItem(path, name) {
 
 async function populateItem(path, name) {
     const divResult = document.getElementById("result");
-    const id = String(document.getElementById(`${name.toLowerCase()}Id`).value).trim()
+    const id = await slugify(
+        String(
+            document.getElementById(`${name.toLowerCase()}Id`).value
+        ).trim()
+    )
     const url = `http://${host}${path}${id}`;
     try {
         response = await fetch(url)
@@ -138,7 +149,6 @@ async function populateItem(path, name) {
                             if (fields[key]) {
                                 fields[key].value = parsedResponse[key];
                             }
-                            console.log(parsedResponse[key]);
                         }
                     }
                 );
@@ -152,7 +162,11 @@ async function populateItem(path, name) {
 
 async function deleteItem(path, name) {
     const divResult = document.getElementById("result");
-    const id = document.getElementById(`${name.toLowerCase()}Id`).value
+    const id = await slugify(
+        String(
+            document.getElementById(`${name.toLowerCase()}Id`).value
+        ).trim()
+    )
     const url = `http://${host}${path}${id}`;
     try {
         response = await fetch(url, {method: "delete"})
@@ -173,10 +187,45 @@ async function deleteItem(path, name) {
                 };
                 response.json()
                 .then(
-                    response => (
-                        divResult.innerHTML = JSON.stringify(response, undefined, 4),
-                        console.log(JSON.stringify(response, undefined, 4))
-                    )
+                    response => divResult.innerHTML = JSON.stringify(response, undefined, 4)
+                );
+            }
+        )
+    }
+    catch (error) {
+        console.log(error.message);
+    }
+}
+
+async function updateItem(path, name) {
+    const divResult = document.getElementById("result");
+    const form = document.getElementById(`${name.toLowerCase()}UpdateForm`);
+    const formData = new FormData(form);
+    const id = await slugify(
+        String(
+            document.getElementById(`${name.toLowerCase()}Id`).value
+        ).trim()
+    )
+    const url = `http://${host}${path}${id}/`;
+    try {
+        response = await fetch(url, {body: formData, method: "patch"})
+        .then(
+            response => {
+                if (!response.ok) {
+                    socket.send(JSON.stringify({
+                        'notification': `${name} failed to be updated!`
+                    }))
+                }
+                else {
+                    socket.send(
+                        JSON.stringify({
+                                'notification': `${name} updated!`
+                            })
+                        )
+                };
+                response.json()
+                .then(
+                    response => divResult.innerHTML = JSON.stringify(response, undefined, 4)
                 );
             }
         )

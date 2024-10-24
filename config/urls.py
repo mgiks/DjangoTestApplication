@@ -36,5 +36,5 @@ urlpatterns = [
     path("one-to-many/", include("one_to_many.urls")),
     path("many-to-one/", include("many_to_one.urls")),
     path("many-to-many/", include("many_to_many.urls")),
-    path("main/", include("websockets.urls"))
+    path("main/", include("websockets.urls")),
 ]
