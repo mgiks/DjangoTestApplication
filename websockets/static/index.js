@@ -30,7 +30,7 @@ function slugify(str) {
 
 async function listItems(path, name) {
     const divResult = document.getElementById("result");
-    const url = `http://${host}${path}`;
+    const url = `https://${host}${path}`;
     try {
         const response = await fetch(url).then(response => response.json());
         const jsonResponse = JSON.stringify(response, undefined, 4)
@@ -49,7 +49,7 @@ async function createItem(path, name) {
     const divResult = document.getElementById("result");
     const form = document.getElementById(`${name.toLowerCase()}CreateForm`);
     const formData = new FormData(form)
-    const url = `http://${host}${path}create/`;
+    const url = `https://${host}${path}create/`;
     try {
         response = await fetch(url, {body: formData, method: "post"})
         .then(
@@ -85,7 +85,7 @@ async function getItem(path, name) {
             document.getElementById(`${name.toLowerCase()}Id`).value
         ).trim()
     )
-    const url = `http://${host}${path}${id}`;
+    const url = `https://${host}${path}${id}`;
     try {
         response = await fetch(url)
         .then(
@@ -121,7 +121,7 @@ async function populateItem(path, name) {
             document.getElementById(`${name.toLowerCase()}Id`).value
         ).trim()
     )
-    const url = `http://${host}${path}${id}`;
+    const url = `https://${host}${path}${id}`;
     try {
         response = await fetch(url)
         .then(
@@ -167,7 +167,7 @@ async function deleteItem(path, name) {
             document.getElementById(`${name.toLowerCase()}Id`).value
         ).trim()
     )
-    const url = `http://${host}${path}${id}`;
+    const url = `https://${host}${path}${id}`;
     try {
         response = await fetch(url, {method: "delete"})
         .then(
@@ -206,7 +206,7 @@ async function updateItem(path, name) {
             document.getElementById(`${name.toLowerCase()}Id`).value
         ).trim()
     )
-    const url = `http://${host}${path}${id}/`;
+    const url = `https://${host}${path}${id}/`;
     try {
         response = await fetch(url, {body: formData, method: "patch"})
         .then(
