@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ["https://urchin-app-6d5dz.ondigitalocean.app", "*"]
 # Для взаимодействия со фронтом
 CORS_ORIGIN_ALLOW_ALL = True
 
+# Для работы в продакшене
+CSRF_TRUSTED_ORIGINS = ['https://urchin-app-6d5dz.ondigitalocean.app']
 
 # Application definition
 
