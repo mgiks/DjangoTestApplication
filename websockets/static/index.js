@@ -224,11 +224,11 @@ async function updateItem(path, name) {
     const divResult = document.getElementById("result");
     const form = document.getElementById(`${name.toLowerCase()}UpdateForm`);
     const formData = new FormData(form);
-    const id = await slugify(
+    const id = slugify(
         String(
             document.getElementById(`${name.toLowerCase()}Id`).value
         ).trim()
-    )``
+    )
     const url = `https://${host}${path}${id}/`;
     try {
         response = await fetch(url, {body: formData, method: "put"})
